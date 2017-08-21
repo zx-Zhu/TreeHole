@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/header_main"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/header_background"
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
+
+            <ImageView
+                android:id="@+id/back_header"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp"
+                android:src="@drawable/back"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="title"
+                android:textColor="@color/md_white_1000"
+                android:textSize="18dp"/>
+
+            <ImageView
+                android:id="@+id/search_header"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="20dp"
+                android:padding="6dp"
+                android:src="@drawable/search"
+                android:visibility="gone"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/square_bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_square"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/square_focus"/>
+
+                <TextView
+                    android:id="@+id/tx_square"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="广场"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/app_text_size_small"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/message_bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:paddingTop="6dp"
+                    android:src="@drawable/message"/>
+
+                <TextView
+                    android:id="@+id/tx_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="消息"
+                    android:textSize="@dimen/app_text_size_small"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mine_bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_mine"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:paddingTop="4dp"
+                    android:src="@drawable/mine"/>
+
+                <TextView
+                    android:id="@+id/tx_mine"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="个人中心"
+                    android:textSize="@dimen/app_text_size_small"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_above="@id/bottom_bar_main"
+            android:background="#999"/>
+
+        <LinearLayout
+            android:id="@+id/layout_main"
+            android:layout_above="@id/line"
+            android:layout_below="@+id/header_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
