@@ -135,6 +135,7 @@ public class MessageModel extends AVIMMessageHandler implements IMessageModel {
     @Override
     public void getConversationByTargetName(final String username, final QueryCallback callback) {
         callback.start();
+        if (username.equals(AVUser.getCurrentUser().getUsername())) return;
         AVIMConversationsQuery avimConversationsQuery = self.getConversationsQuery();
         avimConversationsQuery.whereEqualTo("name", AVUser.getCurrentUser().getUsername()+"&"+username);
         avimConversationsQuery.setQueryPolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);

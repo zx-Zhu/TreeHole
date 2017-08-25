@@ -195,15 +195,24 @@ public class SquareContentActivity extends BaseActivity implements ISquareConten
                     }
 
                     @Override
-                    public void onFinish(List<AVUser> list) {
+                    public void onFinish(final List<AVUser> list) {
                         AVFile head = (AVFile) list.get(0).get("head");
                         try {
                             Glide.with(SquareContentActivity.this).load(head.getUrl().toString()).crossFade().into(b.iconCommentItem);
                         } catch (IllegalArgumentException e) {
                             e.printStackTrace();
                         }
+                        b.iconCommentItem.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(SquareContentActivity.this,UserActivity.class);
+                                intent.putExtra("id",list.get(0).getObjectId());
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
+
 
             }
 

@@ -35,7 +35,6 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:gravity="center"
-                    android:text="nickname"
                     android:textColor="@color/textMid"
                     android:textSize="@dimen/app_text_size_small"/>
             </LinearLayout>

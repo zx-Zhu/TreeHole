@@ -33,6 +33,7 @@ public class UserActivity extends BaseActivity implements IUserActivity {
     private ActivityUserBinding binding;
     private IUserActivityPresenter presenter;
     private String leftUrl, rightUrl;
+    private AVUser thisUser;
     private static final String TAG = "UserActivityTest";
 
     @Override
@@ -44,6 +45,7 @@ public class UserActivity extends BaseActivity implements IUserActivity {
         presenter.getFollowees(id);
         presenter.getFollowers(id);
         if (id.equals(AVUser.getCurrentUser().getObjectId())) {
+            thisUser = AVUser.getCurrentUser();
             setUser(AVUser.getCurrentUser());
             binding.sendMessageUser.setVisibility(View.GONE);
             presenter.getRecently(AVUser.getCurrentUser().getUsername());
@@ -54,6 +56,7 @@ public class UserActivity extends BaseActivity implements IUserActivity {
                 public void done(AVObject obj) {
                     Log.d(TAG, "done: ");
                     AVUser user = (AVUser) obj;
+                    thisUser = user;
                     setUser(user);
                     leftUrl = user.getAVFile("head").getUrl();
                     rightUrl = AVUser.getCurrentUser().getAVFile("head").getUrl();
@@ -263,6 +266,18 @@ public class UserActivity extends BaseActivity implements IUserActivity {
                 } else {
                     b.audioRecently.setRecordTime("No Audio");
                 }
+                b.recentlyLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(UserActivity.this, SquareContentActivity.class);
+                        intent.putExtra("nickname", thisUser.get("nickname").toString());
+                        intent.putExtra("iconUrl", thisUser.getAVFile("head").getUrl());
+                        intent.putExtra("id", list.get(i).getObjectId());
+                        intent.putExtra("userId", thisUser.getUsername());
+                        intent.putExtra("description", list.get(i).get("description").toString());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
