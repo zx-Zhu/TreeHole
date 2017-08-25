@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:minHeight="60dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+              android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/icon_audio_left"
+        android:layout_gravity="top"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+    <LinearLayout
+        android:id="@+id/audio_layout_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pop_left"
+        android:layout_gravity="center_vertical"
+        android:minHeight="35dp"
+        android:maxWidth="220dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_audio_left"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:padding="3dp"
+            android:src="@drawable/audio_content"/>
+
+        <TextView
+            android:id="@+id/time_audio_left"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/md_white_1000"
+            android:gravity="center_vertical"
+            android:layout_height="25dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

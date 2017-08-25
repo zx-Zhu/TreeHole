@@ -29,7 +29,7 @@ public class AudioTrackManager {
     private boolean isStart = false;
     private static AudioTrackManager mInstance;
     private int bufferSize;
-    public static final String audioPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Show/audio/in/";
+    public static final String audioPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Teller/audio/in/";
 
     public AudioTrackManager() {
         bufferSize = AudioTrack.getMinBufferSize(8000, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
@@ -263,6 +263,10 @@ public class AudioTrackManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isPlaying() {
+        return isStart;
     }
 
 }

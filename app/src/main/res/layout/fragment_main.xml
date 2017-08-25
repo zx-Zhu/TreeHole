@@ -84,12 +84,28 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/icon_message"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:paddingTop="6dp"
-                    android:src="@drawable/message"/>
+                    android:layout_height="35dp">
+
+                    <ImageView
+                        android:id="@+id/icon_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="6dp"
+                        android:src="@drawable/message"/>
+                    <TextView
+                        android:id="@+id/num_messages"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/app_text_size_small"
+                        android:background="@drawable/background_circle"
+                        android:layout_gravity="center_horizontal"/>
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/tx_message"
@@ -135,10 +151,10 @@
 
         <LinearLayout
             android:id="@+id/layout_main"
-            android:layout_above="@id/line"
-            android:layout_below="@+id/header_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/line"
+            android:layout_below="@+id/header_main"
             android:orientation="horizontal">
 
         </LinearLayout>

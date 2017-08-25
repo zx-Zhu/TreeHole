@@ -2,7 +2,9 @@ package com.zxzhu.show.view.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
@@ -19,6 +21,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zxzhu.show.R;
 import com.zxzhu.show.databinding.FragmentCameraBinding;
 import com.zxzhu.show.presenter.CameraPresenter;
@@ -35,6 +40,7 @@ import com.zxzhu.show.view.fragments.inference.ICameraFragment;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by zxzhu on 2017/8/17.
@@ -136,9 +142,19 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
 
             case R.id.album_camera:
                 if (PermissionUnit.hasDiskPermission(getActivity())) {
-                    Intent intent;
-                    intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 1);
+                    Matisse.from(this)
+                            .choose(MimeType.of(MimeType.JPEG, MimeType.PNG))
+//                            .capture(true)
+//                            .captureStrategy(
+//                                    new CaptureStrategy(true, "com.zxzhu.show.fileprovider"))
+                            .countable(true)
+                            .maxSelectable(1)
+                            .gridExpectedSize(400)
+                            .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                            .thumbnailScale(0.85f)
+                            .theme(R.style.Matisse_Dracula)
+                            .imageEngine(new GlideEngine())
+                            .forResult(000);
                 } else {
                     PermissionUnit.askForDiskPermission(this, 1);
                 }
@@ -167,7 +183,6 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
                     case 1:
                         //关闭
                         light_num = 0;
-                        //关闭
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                         mCamera.setParameters(parameters);
                         binding.lightCamera.setImageResource(R.drawable.light_off);
@@ -317,12 +332,13 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
      */
     private void releaseCamera() {
         light_num = 0;
-        binding.lightCamera.setImageResource(R.drawable.light_off);
+
         if (mCamera != null) {
             mCamera.setPreviewCallback(null);
             mCamera.stopPreview();
             mCamera.release();
             mCamera = null;
+            binding.lightCamera.setImageResource(R.drawable.light_off);
         }
     }
 
@@ -375,7 +391,7 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
     public void onStart() {
         Log.d(TAG, "onStart: ");
 
-        if (PermissionUnit.hasCameraPermission(getActivity())) {
+        if (PermissionUnit.hasCameraPermission(getActivity())&&PermissionUnit.hasDiskPermission(getActivity())) {
             Log.i("TestData", "FoundFragment 加载相机");
             mCamera = getCamera(mCameraId);
             if (mHolder != null) {
@@ -384,7 +400,12 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
         } else {
             PermissionUnit.askForCameraPermission(this,0);
         }
-        super.onStart();
+        try {
+            super.onStart();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -458,12 +479,22 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: "+data);
         if (data != null) {
-            Uri uri = data.getData();
+            List<Uri> uris = Matisse.obtainResult(data);
+            Uri uri = uris.get(0);
             Bitmap pic , miniPic ;
-//            BitmapFactory.Options options = new BitmapFactory.Options();
-//            options.inJustDecodeBounds = true;
-//            options.inSampleSize = 4;
+            String result;
+            Cursor cursor = getActivity().getContentResolver().query(uri,
+                    new String[]{MediaStore.Images.ImageColumns.DATA},
+                    null, null, null);
+            if (cursor == null) result = uri.getPath();
+            else {
+                cursor.moveToFirst();
+                int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                result = cursor.getString(index);
+                cursor.close();
+            }
             InputStream input = null;
             try {
                input = getActivity().getContentResolver().openInputStream(uri);
@@ -472,9 +503,10 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
             }
             Log.d(TAG, "onActivityResult: "+input.toString());
             pic = BitmapFactory.decodeStream(input);
+            //自动修正图片方向
+            pic = BitmapUtils.rotaingImageView(BitmapUtils.readPictureDegree(result),pic);
+
             pic = Bitmap.createScaledBitmap(pic,pic.getWidth()/4, pic.getHeight()/4,true);
-            pic = BitmapUtils.rotaingImageView(BitmapUtils.readPictureDegree(uri.getPath().replace("/raw/","")),pic);
-            Log.d(TAG, "onActivityResult: "+uri.getPath().replace("/raw/",""));
             miniPic = Bitmap.createScaledBitmap(pic,pic.getWidth()/2, pic.getHeight()/2,true);
             String picPath = presenter.saveBitmap(pic,"pic_"+ MainActivity.USER+System.currentTimeMillis());
             String picMiniPath = presenter.saveBitmap(miniPic, "picMini_"+ MainActivity.USER+System.currentTimeMillis());

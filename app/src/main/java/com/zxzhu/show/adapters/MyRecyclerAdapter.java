@@ -13,23 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.avos.avoscloud.AVObject;
-
-import java.util.List;
-
 public class MyRecyclerAdapter< T extends ViewDataBinding> extends RecyclerView.Adapter<MyRecyclerAdapter.BaseViewHolder> {
-    private List<AVObject> list;
+    private int size;
     private LayoutInflater inflater;
     private Context context;
     @LayoutRes
     private int layout;
     private BindView<T> bindView;
 
-    public MyRecyclerAdapter(Context context, @LayoutRes int itemLayout, List<AVObject> list, BindView<T> bindView) {
+    public MyRecyclerAdapter(Context context, @LayoutRes int itemLayout, int size, BindView<T> bindView) {
         this.context = context;
         this.layout = itemLayout;
-        this.list = list;
         this.bindView = bindView;
+        this.size = size;
     }
 
 
@@ -41,16 +37,20 @@ public class MyRecyclerAdapter< T extends ViewDataBinding> extends RecyclerView.
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        bindView.onBindViewHolder((T) holder.getBinding(), position);
+        try {
+            bindView.onBindViewHolder((T) holder.getBinding(), position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return size;
     }
 
     public interface BindView<T> {
-        void onBindViewHolder(T b, int position);
+        void onBindViewHolder(T b, int position) throws Exception;
         void onRecycled(T b);
     }
 

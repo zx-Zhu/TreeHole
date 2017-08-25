@@ -19,6 +19,9 @@ import com.zxzhu.show.units.base.BaseFragment;
 import com.zxzhu.show.view.MainActivity;
 import com.zxzhu.show.view.fragments.inference.IMainFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by zxzhu on 2017/8/17.
  */
@@ -28,6 +31,8 @@ public class MainFragment extends BaseFragment implements IMainFragment{
     private Resources resource;
     private ColorStateList orange, textLight;
     private IMainPresenter presenter;
+    private List<AVIMMessage> messageList;
+    private int fragmentPosition = 0;
     @Override
     public void setNavigationBar() {
         binding.squareBottom.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +50,8 @@ public class MainFragment extends BaseFragment implements IMainFragment{
                 binding.txSquare.setTextColor(orange);
                 binding.txMessage.setTextColor(textLight);
                 binding.txMine.setTextColor(textLight);
+                receiveMessage();
+                fragmentPosition = 0;
             }
         });
         binding.messageBottom.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +69,10 @@ public class MainFragment extends BaseFragment implements IMainFragment{
                 binding.txSquare.setTextColor(textLight);
                 binding.txMessage.setTextColor(orange);
                 binding.txMine.setTextColor(textLight);
+                binding.numMessages.setText("");
+                messageList.clear();
+                binding.numMessages.setVisibility(View.GONE);
+                fragmentPosition = 1;
             }
         });
         binding.mineBottom.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +90,8 @@ public class MainFragment extends BaseFragment implements IMainFragment{
                 binding.txSquare.setTextColor(textLight);
                 binding.txMessage.setTextColor(textLight);
                 binding.txMine.setTextColor(orange);
+                receiveMessage();
+                fragmentPosition = 2;
             }
         });
     }
@@ -110,7 +123,11 @@ public class MainFragment extends BaseFragment implements IMainFragment{
         presenter.getMessage(new MessageModel.MessageListener() {
             @Override
             public void onMessage(AVIMMessage message, AVIMConversation conversation, AVIMClient client) {
-                toast("收到一条私信");
+                messageList.add(message);
+                if (messageList.size()!=0) {
+                    binding.numMessages.setVisibility(View.VISIBLE);
+                    binding.numMessages.setText(String.valueOf(messageList.size()));
+                }
             }
         });
     }
@@ -122,9 +139,11 @@ public class MainFragment extends BaseFragment implements IMainFragment{
         resource = (Resources) getActivity().getBaseContext().getResources();
         orange = (ColorStateList) resource.getColorStateList(R.color.orange);
         textLight = (ColorStateList) resource.getColorStateList(R.color.textLight);
+        messageList = new ArrayList<>();
         setNavigationBar();
         setFragments();
         setHeaderBar();
+        receiveMessage();
     }
 
     @Override

@@ -11,47 +11,98 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <include layout="@layout/bar"/>
+        <include
+            android:id="@+id/bar_chat"
+            layout="@layout/bar"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_chat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_above="@+id/edit_layout"
+            android:layout_below="@+id/bar_chat"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_above="@+id/edit_layout"
             android:background="@color/textLight"/>
 
         <LinearLayout
+            android:id="@+id/edit_layout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:background="@color/md_white_1000"
             android:orientation="horizontal"
-            android:padding="4dp">
+            android:padding="4dp"
+            android:windowSoftInputMode="adjustPan">
 
-            <EditText
-                android:id="@+id/edit_chat"
+
+            <ImageView
+                android:id="@+id/img_audio"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:padding="3dp"
+                android:src="@drawable/voice_public"/>
+
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 android:layout_weight="5"
-                android:background="@drawable/shape"
-                android:paddingLeft="4dp"
-                android:textSize="14sp"/>
+                android:layout_gravity="center_vertical"
+                android:minHeight="30dp">
+
+                <EditText
+                    android:id="@+id/edit_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:minHeight="30dp"
+                    android:padding="6dp"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/record_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_blue"
+                    android:text="按住  录音"
+                    android:minHeight="30dp"
+                    android:visibility="gone"
+                    android:padding="6dp"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/app_text_size_medium"/>
+            </FrameLayout>
+            <ImageView
+                android:id="@+id/img_picker"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/img_picker"/>
 
             <TextView
                 android:id="@+id/send_btn_chat"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_orange"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/btn_unable"
                 android:gravity="center"
                 android:padding="6dp"
                 android:text="发送"
                 android:textColor="#FFFFFF"
-                android:textSize="10sp"/>
+                android:textSize="@dimen/app_text_size_small"/>
         </LinearLayout>
+
     </LinearLayout>
 </layout>

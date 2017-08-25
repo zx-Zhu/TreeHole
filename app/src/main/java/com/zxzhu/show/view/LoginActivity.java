@@ -2,7 +2,9 @@ package com.zxzhu.show.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import com.zxzhu.show.R;
 import com.zxzhu.show.databinding.ActivityLoginBinding;
 import com.zxzhu.show.presenter.ILoginPresenter;
 import com.zxzhu.show.presenter.LoginPresenter;
+import com.zxzhu.show.units.PermissionUnit;
 import com.zxzhu.show.units.base.BaseActivity;
 import com.zxzhu.show.view.Inference.ILoginActivity;
 
@@ -27,6 +30,7 @@ public class LoginActivity extends BaseActivity implements ILoginActivity {
         presenter = new LoginPresenter(this);
         title = $(R.id.header_title);
         title.setText("登录");
+        PermissionUnit.askForDiskPermission(this,0);
     }
 
     @Override
@@ -89,5 +93,18 @@ public class LoginActivity extends BaseActivity implements ILoginActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 2:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    toast("没有SD卡权限，请手动开启");
+                }
+                break;
+        }
     }
 }

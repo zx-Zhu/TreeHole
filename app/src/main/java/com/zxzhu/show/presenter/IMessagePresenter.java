@@ -1,5 +1,7 @@
 package com.zxzhu.show.presenter;
 
+import com.avos.avoscloud.AVUser;
+import com.zxzhu.show.model.GetDataModel;
 import com.zxzhu.show.model.MessageModel;
 
 /**
@@ -8,4 +10,6 @@ import com.zxzhu.show.model.MessageModel;
 
 public interface IMessagePresenter {
     void getMessage(MessageModel.MessageListener listener);
+    void getConversation();
+    void getUserData(String username, GetDataModel.GetDataListener<AVUser> listener);
 }

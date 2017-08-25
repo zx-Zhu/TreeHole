@@ -22,6 +22,7 @@
                 android:id="@+id/pic_publish"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -31,7 +32,8 @@
                 />
 
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/tag_pic"
@@ -73,7 +75,7 @@
                 android:layout_weight="6"
                 android:background="#00ffffff"
                 android:gravity="start"
-                android:hint="我知道你肯定有故事，万一我有酒呢"
+                android:hint="........"
                 android:padding="5dp"
                 android:textSize="@dimen/app_text_size_small"/>
 
@@ -86,6 +88,7 @@
                 android:id="@+id/record_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"

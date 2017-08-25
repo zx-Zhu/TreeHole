@@ -24,7 +24,7 @@ public class RecordManager {
 
     public RecordManager() {
         bufferSize = AudioRecord.getMinBufferSize(8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
-        mRecorder = new AudioRecord(MediaRecorder.AudioSource.MIC, 8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, bufferSize * 2);
+
     }
 
 
@@ -86,8 +86,7 @@ public class RecordManager {
                             continue;
                         }
                         if (bytesRecord != 0 && bytesRecord != -1) {
-                            //在此可以对录制音频的数据进行二次处理 比如变声，压缩，降噪，增益等操作
-                            //我们这里直接将pcm音频原数据写入文件 这里可以直接发送至服务器 对方采用AudioTrack进行播放原数据
+                            //处理
                             dos.write(tempBuffer, 0, bytesRecord);
                         } else {
                             break;
@@ -103,7 +102,6 @@ public class RecordManager {
 
     /**
      * 保存文件
-     *
      * @param path
      * @throws Exception
      */
@@ -118,10 +116,10 @@ public class RecordManager {
 
     /**
      * 启动录音
-     *
      * @param path
      */
     public void startRecord(String path) {
+        mRecorder = new AudioRecord(MediaRecorder.AudioSource.MIC, 8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, bufferSize * 2);
         try {
             setPath(path);
             startThread();
@@ -142,11 +140,13 @@ public class RecordManager {
                 }
                 if (mRecorder != null) {
                     mRecorder.release();
+                    mRecorder = null;
                 }
             }
             if (dos != null) {
                 dos.flush();
                 dos.close();
+                dos = null;
             }
         } catch (Exception e) {
             e.printStackTrace();

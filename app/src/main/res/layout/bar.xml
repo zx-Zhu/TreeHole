@@ -27,14 +27,14 @@
             android:textSize="18dp"/>
 
         <ImageView
-            android:id="@+id/search_header"
-            android:layout_width="40dp"
+            android:id="@+id/right_header"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
+            android:adjustViewBounds="true"
             android:visibility="gone"
             android:layout_marginRight="20dp"
-            android:padding="6dp"
-            android:src="@drawable/search"
+            android:padding="12dp"
             />
     </FrameLayout>
 </layout>

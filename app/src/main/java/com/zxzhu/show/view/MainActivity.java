@@ -7,9 +7,11 @@ import android.util.Log;
 
 import com.avos.avoscloud.AVUser;
 import com.zxzhu.show.R;
-import com.zxzhu.show.databinding.ActivityMainBinding;
-import com.zxzhu.show.units.SystemUtil;
 import com.zxzhu.show.adapters.VPAdapter;
+import com.zxzhu.show.databinding.ActivityMainBinding;
+import com.zxzhu.show.model.MessageModel;
+import com.zxzhu.show.units.SystemUtil;
+import com.zxzhu.show.units.UpdateUtil;
 import com.zxzhu.show.units.base.BaseActivity;
 import com.zxzhu.show.view.Inference.IMainActivity;
 import com.zxzhu.show.view.fragments.CameraFragment;
@@ -19,12 +21,15 @@ public class MainActivity extends BaseActivity implements IMainActivity {
     private ActivityMainBinding binding;
     private boolean isStop = false;
     public static String USER = null;
+    private CameraFragment cameraFragment;
 
     @Override
     protected void initData() {
+        cameraFragment = new CameraFragment();
         USER = AVUser.getCurrentUser().getUsername();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setViewPager();
+        UpdateUtil.checkUpdate(this, false);
     }
 
     @Override
@@ -38,8 +43,18 @@ public class MainActivity extends BaseActivity implements IMainActivity {
     }
 
     @Override
+    protected void onResume() {
+
+        int i = binding.pagerMain.getCurrentItem();
+        if (i != 0) {
+            SystemUtil.toggleFullScreen(MainActivity.this, false);
+            cameraFragment.onDestroyView();
+        }
+        super.onResume();
+    }
+
+    @Override
     public void setViewPager() {
-        final CameraFragment cameraFragment = new CameraFragment();
         MainFragment mainFragment = new MainFragment();
         Fragment[] fragments = new Fragment[]{cameraFragment, mainFragment};
         binding.pagerMain.setAdapter(new VPAdapter(this, getSupportFragmentManager(), fragments));
@@ -91,5 +106,11 @@ public class MainActivity extends BaseActivity implements IMainActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void finish() {
+        MessageModel.getInstance().quiteIM();
+        super.finish();
     }
 }

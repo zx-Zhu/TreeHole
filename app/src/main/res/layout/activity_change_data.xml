@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.zxzhu.show.view.ChangeDataActivity"
+        android:orientation="vertical">
+
+        <include layout="@layout/bar"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon_change"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/defult_head"
+            android:onClick="setIcon"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:padding="10dp"
+                android:src="@drawable/usernaem"/>
+
+            <EditText
+                android:id="@+id/username_edit_change"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:gravity="center"
+                android:hint="请输入昵称"
+                android:maxLines="1"
+                android:textColor="@color/textLight"
+                android:textColorHint="@color/textLight"
+                android:textSize="@dimen/app_text_size_medium"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:padding="10dp"
+                android:src="@drawable/readme"/>
+
+            <EditText
+                android:id="@+id/readme_edit_change"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:gravity="center"
+                android:hint="请输入简介"
+                android:maxLines="1"
+                android:textColor="@color/textLight"
+                android:textColorHint="@color/textLight"
+                android:textSize="@dimen/app_text_size_medium"/>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/button_orange"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="40dp"
+            android:text="保  存"
+            android:textSize="@dimen/app_text_size_medium"
+            android:textColor="@color/md_white_1000"/>
+
+
+    </LinearLayout>
+
+
+
+</layout>

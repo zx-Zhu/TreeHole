@@ -30,6 +30,8 @@ import com.zxzhu.show.view.Inference.ISquarePublicActivity;
 import java.io.File;
 import java.util.List;
 
+import static com.zxzhu.show.units.SystemUtil.secToTime;
+
 public class SquarePublicActivity extends BaseActivity implements ISquarePublicActivity {
     private ActivitySquarePublicBinding binding;
     private String  picPath, miniPicPath;
@@ -126,6 +128,7 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
 //                        AudioTrackManager.getInstance().startPlay(mRecordPath);
                     } else {
                         toast("时间太短，录音无效");
+                        recordManager.stopRecord();
                         File file = new File(mRecordPath);
                         file.delete();
                         mRecordPath = null;
@@ -148,7 +151,7 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
 
     @Override
     public void setVoicePath() {
-        mRecordPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Show/audio/"+MainActivity.USER+System.currentTimeMillis()+".pcm";
+        mRecordPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Teller/audio/"+MainActivity.USER+System.currentTimeMillis()+".pcm";
         File file = new File(mRecordPath);
         if (!file.exists()) {
             file.mkdirs();
@@ -214,41 +217,5 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
                 break;
         }
     }
-    /**
-     * 将整形转化成时分秒格式字符串
-     * @param time
-     * @return
-     */
-    public  String secToTime(int time) {
-        String timeStr = null;
-        int hour = 0;
-        int minute = 0;
-        int second = 0;
-        if (time <= 0)
-            return "00:00";
-        else {
-            minute = time / 60;
-            if (minute < 60) {
-                second = time % 60;
-                timeStr = unitFormat(minute) + ":" + unitFormat(second);
-            } else {
-                hour = minute / 60;
-                if (hour > 99)
-                    return "99:59:59";
-                minute = minute % 60;
-                second = time - hour * 3600 - minute * 60;
-                timeStr = unitFormat(hour) + ":" + unitFormat(minute) + ":" + unitFormat(second);
-            }
-        }
-        return timeStr;
-    }
 
-    public  String unitFormat(int i) {
-        String retStr = null;
-        if (i >= 0 && i < 10)
-            retStr = "0" + Integer.toString(i);
-        else
-            retStr = "" + i;
-        return retStr;
-    }
 }

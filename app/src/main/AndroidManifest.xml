@@ -20,6 +20,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:versionCode="1"
+        android:versionName="1.0"
         android:theme="@style/AppTheme">
         <activity android:name=".view.WelcomeActivity">
             <intent-filter>
@@ -36,6 +38,18 @@
         </activity>
         <activity android:name=".view.SignActivity">
         </activity>
+        <!-- <provider -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:authorities="com.zxzhu.show.fileprovider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- &gt; -->
+
+
+        <!-- </meta-data> -->
+        <!-- </provider> -->
 
         <meta-data
             android:name="UMENG_APPKEY"
@@ -83,7 +97,23 @@
         </activity>
         <activity android:name=".view.SquarePublicActivity">
         </activity>
-        <activity android:name=".view.ChatActivity">
+        <activity
+            android:name=".view.ChatActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".view.PhotoActivity">
+        </activity>
+        <activity android:name=".view.SquareContentActivity">
+        </activity>
+        <activity android:name=".view.CommentActivity">
+        </activity>
+        <activity android:name=".view.UserActivity">
+        </activity>
+        <activity android:name=".view.ChangeDataActivity">
+        </activity>
+        <activity android:name=".view.ChangePasswordActivity">
+        </activity>
+        <activity android:name=".view.AboutActivity">
         </activity>
     </application>
 

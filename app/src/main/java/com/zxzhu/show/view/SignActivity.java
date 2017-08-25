@@ -2,17 +2,21 @@ package com.zxzhu.show.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zxzhu.show.R;
 import com.zxzhu.show.databinding.ActivitySignBinding;
 import com.zxzhu.show.presenter.ISignPresenter;
@@ -20,6 +24,8 @@ import com.zxzhu.show.presenter.SignPresenter;
 import com.zxzhu.show.units.PermissionUnit;
 import com.zxzhu.show.units.base.BaseActivity;
 import com.zxzhu.show.view.Inference.ISignActivity;
+
+import java.util.List;
 
 public class SignActivity extends BaseActivity implements ISignActivity {
     private ActivitySignBinding binding;
@@ -67,7 +73,9 @@ public class SignActivity extends BaseActivity implements ISignActivity {
         if (readme.equals("")) {
             readme = null;
         }
-
+        if (image == null) {
+            image = BitmapFactory.decodeResource(this.getResources(), R.drawable.defult_head);
+        }
         sign(username, password, phone, image, readme);
     }
 
@@ -105,9 +113,16 @@ public class SignActivity extends BaseActivity implements ISignActivity {
 
     public void setIcon(View view) {
         if (PermissionUnit.hasDiskPermission(this)) {
-            Intent intent;
-            intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, GET_IMAGE);
+            Matisse.from(this)
+                    .choose(MimeType.of(MimeType.JPEG, MimeType.PNG))
+                    .countable(true)
+                    .maxSelectable(1)
+                    .gridExpectedSize(400)
+                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                    .thumbnailScale(0.85f)
+                    .theme(R.style.Matisse_Dracula)
+                    .imageEngine(new GlideEngine())
+                    .forResult(GET_IMAGE);
         } else {
             PermissionUnit.askForDiskPermission(this, 0);
         }
@@ -119,7 +134,8 @@ public class SignActivity extends BaseActivity implements ISignActivity {
         switch (requestCode) {
             case GET_IMAGE:
                 if (data != null) {
-                    Uri uri = data.getData();
+                    List<Uri> uris = Matisse.obtainResult(data);
+                    Uri uri = uris.get(0);
                     presenter.sendGetFixedIntent(uri, GET_FIXED_IMAGE);
                 }
                 break;

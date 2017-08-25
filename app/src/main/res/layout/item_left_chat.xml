@@ -3,10 +3,13 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:minHeight="60dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
               android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/icon_item_left"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="top"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="40dp"
@@ -15,9 +18,16 @@
         android:id="@+id/tx_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="60dp"
         android:background="@drawable/pop_left"
+        android:layout_gravity="center_vertical"
+        android:minHeight="35dp"
+        android:maxWidth="220dp"
+        android:layout_marginRight="40dp"
         android:gravity="center_vertical"
-        android:paddingLeft="30dp"/>
+        android:textSize="@dimen/app_text_size_medium"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
 </LinearLayout>

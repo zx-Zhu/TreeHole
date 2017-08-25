@@ -18,4 +18,6 @@ public interface IUserModel {
     String getPhoneNumber(String username);
     void changePassword(String username, String password_pre, String password_new);
     String saveBitmap(Bitmap bitmap, String name);
+    void followUser(String id, UserModel.UserListener listener);
+    void unFollowUser(String id, final UserModel.UserListener listener);
 }

@@ -62,7 +62,7 @@ public class RecordButton extends ImageButton {
         mPaint.setDither(true);//防抖动
         mPaint.setTextSize(25);
         mPaint.setColor(Color.GRAY);
-        canvas.drawText(time,getWidth()/2-mPaint.measureText(time)/2,getHeight()-25,mPaint);
+        canvas.drawText(time,getWidth()/2-mPaint.measureText(time)/2,getHeight()-10,mPaint);
         super.onDraw(canvas);
     }
 
