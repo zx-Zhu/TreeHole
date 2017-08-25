@@ -184,13 +184,13 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
         List<ImgSenceBean.ObjectsBean> objs = imgSenceBean.getObjects();
         List<ImgSenceBean.SencesBean> scenes = imgSenceBean.getScenes();
         String tx = null;
-        for (ImgSenceBean.ObjectsBean bean : objs) {
-            tx = tx+" " +bean.getValue();
-        }
+//        for (ImgSenceBean.ObjectsBean bean : objs) {
+//            tx = tx+" " +bean.getValue();
+//        }
         for (ImgSenceBean.SencesBean bean : scenes) {
             tx = tx+" "+ bean.getValue();
         }
-        tx.replace("null", "");
+        tx.replaceAll("null", "");
         binding.tagPic.setText(tx);
     }
 
