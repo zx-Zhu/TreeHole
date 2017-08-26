@@ -25,7 +25,17 @@ public class MineFragment extends BaseFragment {
         setChangePassword();
         setShare();
         setOpinion();
+        setAbout();
         setAboutMe();
+    }
+
+    private void setAboutMe() {
+        b.aboutMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toast("尚未完善此功能");
+            }
+        });
     }
 
     private void setChangeData() {
@@ -117,7 +127,7 @@ public class MineFragment extends BaseFragment {
         });
     }
 
-    private void setAboutMe() {
+    private void setAbout() {
         b.about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

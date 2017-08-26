@@ -75,15 +75,14 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
     @Override
     public void setList(final List<AVIMConversation> list) {
         Log.d("zxccvb", "setList: "+list.size());
-        for (AVIMConversation con : list) {
-            if (con.getLastMessage() == null) {
-                Log.d("zxccvb", "setList: "+con);
-                list.remove(con);
+        for (int i = 0; i<list.size();i++) {
+            if (list.get(i).getLastMessage() == null){
+                list.remove(i);
+                i -= 1;
             }
+            Log.d("zxccvb", "setList: "+list.size());
         }
-        if (list.size() == 0) {
-            toast("还没有对话信息");
-        }
+        Log.d("zxccvb", "onBindViewHolder: "+list.size());
         if (list != null) {
             binding.listMessage.setAdapter(new MyRecyclerAdapter<ItemMessageBinding>(getActivity(), R.layout.item_message
                     , list.size(), new MyRecyclerAdapter.BindView<ItemMessageBinding>() {
@@ -93,11 +92,12 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
                     final int i = list.size() - position - 1;
                     String type = "";
                     JSONObject json = null;
+                    Log.d("zxccvb", "123123: "+list.get(i).getLastMessage());
 //                    Log.d("zxccvb", list.size()+"onBindViewHolder: " + list.get(i).getLastMessage().getContent());
                     try {
                         if (list.get(i).getLastMessage() != null) {
                             json = new JSONObject(list.get(i).getLastMessage().getContent());
-                            Log.d("zxccvb", "onBindViewHolder: "+json);
+
 //                        type = list.get(i).getLastMessage().getContent().substring(list.get(i).getLastMessage().getContent().length()-3);
                         }
 

@@ -58,6 +58,11 @@ public class ChatActivity extends BaseActivity implements IChatActivity, Message
     private int size;
 
     @Override
+    public void initState() {
+//        super.initState();
+    }
+
+    @Override
     protected void initData() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
         presenter = new ChatPresenter(this);

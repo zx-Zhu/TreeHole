@@ -99,7 +99,7 @@
         </activity>
         <activity
             android:name=".view.ChatActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".view.PhotoActivity">
         </activity>

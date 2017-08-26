@@ -2,7 +2,8 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,9 +12,42 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <include
-            android:id="@+id/bar_chat"
-            layout="@layout/bar"/>
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                     android:layout_width="match_parent"
+                     android:layout_height="50dp"
+                     android:background="@drawable/chat_header_background"
+                     android:orientation="horizontal"
+                     >
+
+            <ImageView
+                android:id="@+id/back_header"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:src="@drawable/back"/>
+
+            <TextView
+                android:id="@+id/header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="title"
+                android:textColor="@color/md_white_1000"
+                android:textSize="18dp"/>
+
+            <ImageView
+                android:id="@+id/right_header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                android:layout_marginRight="20dp"
+                android:padding="12dp"
+                />
+        </FrameLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_chat"
@@ -39,7 +73,7 @@
             android:background="@color/md_white_1000"
             android:orientation="horizontal"
             android:padding="4dp"
-            android:windowSoftInputMode="adjustPan">
+            >
 
 
             <ImageView
@@ -63,7 +97,7 @@
                     android:id="@+id/edit_chat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape"
+                    android:background="@drawable/shape_edit"
                     android:minHeight="30dp"
                     android:padding="6dp"
                     android:textSize="14sp"/>
