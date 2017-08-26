@@ -294,9 +294,13 @@ public class ChatActivity extends BaseActivity implements IChatActivity, Message
 
     @Override
     public void onMessage(AVIMMessage message, AVIMConversation conversation, AVIMClient client) {
-        size += 1;
-        adapter.addMessage(message);
-        binding.listChat.smoothScrollToPosition(size);
+        if (message.getFrom().equals(user)) {
+            size += 1;
+            adapter.addMessage(message);
+            binding.listChat.smoothScrollToPosition(size);
+        } else {
+            toast(message.getFrom()+"发来一条消息");
+        }
     }
 
     @Override
