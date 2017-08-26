@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="v1.0"
+            android:text="v1.1"
             android:gravity="center"
             android:textSize="@dimen/app_text_size_small"
             android:textColor="@color/textMid"/>
