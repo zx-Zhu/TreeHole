@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="讲述者"
+            android:text="讲述人"
             android:textColor="@color/textDeep"
             android:textSize="@dimen/app_text_size_large"
             android:gravity="center"

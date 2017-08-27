@@ -128,7 +128,6 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
         }
     };
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

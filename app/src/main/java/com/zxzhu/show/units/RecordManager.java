@@ -24,7 +24,6 @@ public class RecordManager {
 
     public RecordManager() {
         bufferSize = AudioRecord.getMinBufferSize(8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
-
     }
 
 

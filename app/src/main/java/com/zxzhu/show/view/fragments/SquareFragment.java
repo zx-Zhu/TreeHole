@@ -129,9 +129,9 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
                             b.favorNum.setText(favor);
                             isFavor[0] = true;
                         } else {
-                            for (int n = 0; n < num_favor; n++) {
-                                if (favors.get(n).equals(AVUser.getCurrentUser().getUsername())) {
-                                    favors.remove(n);
+                            for (String str : favors) {
+                                if (str.equals(AVUser.getCurrentUser().getUsername())) {
+                                    favors.remove(str);
                                     break;
                                 }
                             }

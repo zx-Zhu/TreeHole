@@ -15,7 +15,7 @@ public class WelcomeActivity extends BaseActivity implements IWelcomeActivity {
 
     @Override
     protected void initData() {
-        AVOSCloud.initialize(this, "xKo7tm6aWudtBr4qON4rOXnx-gzGzoHsz", "Xf15R16Tc7PwwnowHjMNkRKr");
+        AVOSCloud.initialize(this, "******", "******");
         AVOSCloud.setDebugLogEnabled(true);
         welcomePresenter = new WelcomePresenter(this);
         autoLogin();
