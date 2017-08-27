@@ -5,13 +5,15 @@
 
 ~~修改聊天界面窗口被键盘顶起问题~~
 
+----------------------更新于8月27
+
 RedRock最终考核了 
 
 感谢浏览进去的每位朋友
 
 时间仓促部分功能不完善，请期待下一版
 
-[apk传送门](http://ac-xKo7tm6a.clouddn.com/dcf47f908af5012c9793.apk)
+[apk传送门](http://ac-xKo7tm6a.clouddn.com/4d34f70fae41a963824e.apk)
 
 * ### 《讲述人》
 
