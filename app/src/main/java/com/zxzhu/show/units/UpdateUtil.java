@@ -62,7 +62,7 @@ public class UpdateUtil {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //确定
-                download(context, obj.getAVFile("apk").getUrl());
+                download(context, "http://47.94.206.39/teller/teller.apk");
                 Toast.makeText(context, "开始下载, 请注意通知栏", Toast.LENGTH_SHORT).show();
             }
         });

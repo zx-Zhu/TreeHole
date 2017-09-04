@@ -191,6 +191,8 @@ public class ChatActivity extends BaseActivity implements IChatActivity, Message
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Log.d("??????", "sendAudioMessage: "+message);
+            if (message == null) return;
             message.setText(time);
             message.setFrom(AVUser.getCurrentUser().getUsername());
             size += 1;
@@ -232,6 +234,7 @@ public class ChatActivity extends BaseActivity implements IChatActivity, Message
                                 binding.recordBtn.setText("按住  录音");
                                 binding.recordBtn.setTextColor(Color.parseColor("#999999"));
                                 String time = secToTime((int) (endTime - startTime) / 1000);
+                                Log.d("??????", "onTouch: "+time);
                                 sendAudioMessage(time);
                             } else if (endTime - startTime < 500) {
                                 toast("时间太短，录音无效");

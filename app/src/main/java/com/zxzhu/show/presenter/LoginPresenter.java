@@ -10,6 +10,7 @@ import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.zxzhu.show.model.IUserModel;
 import com.zxzhu.show.model.UserModel;
+import com.zxzhu.show.units.Apis;
 import com.zxzhu.show.view.Inference.ILoginActivity;
 
 import org.json.JSONException;
@@ -27,8 +28,8 @@ public class LoginPresenter implements ILoginPresenter {
 
     public LoginPresenter(ILoginActivity activity) {
         loginActivity = activity;
-        PlatformConfig.setQQZone("1106280483", "gLiXoc06apTtfyw8");
-        PlatformConfig.setSinaWeibo("2203336036", "6b0ac8d8c371124eee648b7657840c4d","www.baidu.com");
+        PlatformConfig.setQQZone(Apis.QQId, Apis.QQKey);
+        PlatformConfig.setSinaWeibo(Apis.WbId, Apis.WbId,Apis.WbCallBack);
         Config.DEBUG = true;
     }
     @Override

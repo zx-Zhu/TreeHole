@@ -7,6 +7,7 @@ import com.avos.avoscloud.AVOSCloud;
 import com.zxzhu.show.R;
 import com.zxzhu.show.presenter.IwelcomePresenter;
 import com.zxzhu.show.presenter.WelcomePresenter;
+import com.zxzhu.show.units.Apis;
 import com.zxzhu.show.units.base.BaseActivity;
 import com.zxzhu.show.view.Inference.IWelcomeActivity;
 
@@ -15,7 +16,7 @@ public class WelcomeActivity extends BaseActivity implements IWelcomeActivity {
 
     @Override
     protected void initData() {
-        AVOSCloud.initialize(this, "******", "******");
+        AVOSCloud.initialize(this, Apis.LeanCloudId, Apis.LeanCloudKey);
         AVOSCloud.setDebugLogEnabled(true);
         welcomePresenter = new WelcomePresenter(this);
         autoLogin();
