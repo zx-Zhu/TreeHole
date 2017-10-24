@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Teller.iml" filepath="$PROJECT_DIR$/Teller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TreeHole.iml" filepath="$PROJECT_DIR$/TreeHole.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/leancloudlivekit/leancloudlivekit.iml" filepath="$PROJECT_DIR$/leancloudlivekit/leancloudlivekit.iml" />
     </modules>

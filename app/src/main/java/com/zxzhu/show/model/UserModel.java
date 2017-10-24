@@ -60,8 +60,10 @@ public class UserModel implements IUserModel {
             avFile = AVFile.withAbsoluteLocalPath(username, iconPath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
-        if (iconPath != null) user.put("head", avFile);
+        if (avFile != null) user.put("head", avFile);
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(AVException e) {

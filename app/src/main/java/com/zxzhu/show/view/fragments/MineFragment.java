@@ -3,6 +3,7 @@ package com.zxzhu.show.view.fragments;
 import android.content.Intent;
 import android.view.View;
 
+import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
 import com.zxzhu.show.R;
@@ -49,8 +50,13 @@ public class MineFragment extends BaseFragment {
     }
 
     private void setContent() {
-        Glide.with(this).load(AVUser.getCurrentUser().getAVFile("head").getUrl())
-                .crossFade().into(b.iconMine);
+        AVFile head = AVUser.getCurrentUser().getAVFile("head");
+        if (head != null) {
+            Glide.with(this).load(head.getUrl())
+                    .crossFade().into(b.iconMine);
+        } else {
+            b.iconMine.setImageResource(R.drawable.defult_head);
+        }
         b.nameMine.setText(AVUser.getCurrentUser().get("nickname").toString());
         if (AVUser.getCurrentUser().get("readme") == null || AVUser.getCurrentUser().get("readme").toString().equals("")) {
             b.readmeMine.setText("你还没有添加简介哦");

@@ -9,7 +9,7 @@ android {
         abortOnError false
     }
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.zxzhu.show"
         minSdkVersion 14
@@ -43,7 +43,7 @@ android {
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     def fileName = "teller.apk"
-                    output.outputFile = new File(outputFile.parent, fileName)
+//                    output.outputFile = new File(outputFile.parent, fileName)
                 }
             }
         }
