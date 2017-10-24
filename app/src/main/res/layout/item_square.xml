@@ -39,50 +39,12 @@
                     android:textSize="@dimen/app_text_size_small"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/img_favor"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="6dp"
-                    android:src="@drawable/favor"/>
-
-                <TextView
-                    android:id="@+id/favor_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/textLight"
-                    android:textSize="@dimen/app_text_size_small"/>
-
-
-                <ImageView
-                    android:id="@+id/img_comment"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="6dp"
-                    android:src="@drawable/comment"/>
-
-                <TextView
-                    android:id="@+id/comment_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/textLight"
-                    android:textSize="@dimen/app_text_size_small"/>
-            </LinearLayout>
         </FrameLayout>
         <com.zxzhu.show.units.MyImageView
             android:id="@+id/img_item_square"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:scaleType="centerCrop"
@@ -91,7 +53,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_margin="5dp"
             android:orientation="horizontal">
 
@@ -99,26 +61,67 @@
                 android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="5"
-                android:maxLines="7"
-                android:textSize="@dimen/app_text_size_medium"
                 android:ellipsize="end"
                 android:lineSpacingMultiplier="1.2"
-                android:textColor="@color/md_teal_900"/>
+                android:maxLines="7"
+                android:textColor="@color/md_teal_900"
+                android:textSize="@dimen/app_text_size_medium" />
+
             <com.zxzhu.show.units.RecordButton
                 android:id="@+id/btn_audio"
                 android:layout_width="50dp"
-                android:padding="5dp"
-                android:background="#00ffffff"
-                android:src="@drawable/voice_public"
-                android:scaleType="centerInside"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:layout_height="80dp"/>
+                android:background="#00ffffff"
+                android:padding="5dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/voice_public" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:gravity="center">
 
+            <ImageView
+                android:id="@+id/img_favor"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="6dp"
+                android:src="@drawable/favor"/>
+
+            <TextView
+                android:id="@+id/favor_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/textLight"
+                android:textSize="@dimen/app_text_size_small"/>
+
+
+            <ImageView
+                android:id="@+id/img_comment"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="6dp"
+                android:src="@drawable/comment"/>
+
+            <TextView
+                android:id="@+id/comment_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/textLight"
+                android:textSize="@dimen/app_text_size_small"/>
+        </LinearLayout>
     </LinearLayout>
 </layout>

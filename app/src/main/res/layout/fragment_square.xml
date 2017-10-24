@@ -8,15 +8,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/square_refresh"
+        <com.yalantis.phoenix.PullToRefreshView
+            android:id="@+id/pull_to_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/md_blue_grey_50"
-            android:orientation="vertical">
-
+            android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list_square"
                 android:layout_width="match_parent"
@@ -24,8 +19,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp">
-
             </android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </com.yalantis.phoenix.PullToRefreshView>
     </LinearLayout>
 </layout>

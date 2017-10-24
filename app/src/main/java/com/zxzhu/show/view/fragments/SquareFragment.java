@@ -3,6 +3,7 @@ package com.zxzhu.show.view.fragments;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
+import com.yalantis.phoenix.PullToRefreshView;
 import com.zxzhu.show.R;
 import com.zxzhu.show.adapters.MyRecyclerAdapter;
 import com.zxzhu.show.databinding.FragmentSquareBinding;
@@ -36,12 +38,9 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
     protected void initData() {
         binding = getDataBinding();
         presenter = new SquarePresenter(this);
-        binding.listSquare.setLayoutManager(new StaggeredGridLayoutManager(2,
-                StaggeredGridLayoutManager.VERTICAL));
+        binding.listSquare.setLayoutManager(new LinearLayoutManager(getActivity()));
         getSquareData();
         setRefresh();
-        binding.squareRefresh.setRefreshing(true);
-
     }
 
     @Override
@@ -51,8 +50,7 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
 
     @Override
     public void setList(final List<AVObject> list) {
-        binding.listSquare.setLayoutManager(new StaggeredGridLayoutManager(2,
-                StaggeredGridLayoutManager.VERTICAL));
+        binding.listSquare.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.listSquare.setAdapter(new MyRecyclerAdapter<ItemSquareBinding>(getActivity(), R.layout.item_square,
                 list.size(), new MyRecyclerAdapter.BindView<ItemSquareBinding>() {
             @Override
@@ -217,23 +215,21 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
     }
 
     void setRefresh() {
-        binding.squareRefresh.setColorSchemeResources(R.color.md_deep_orange_100, R.color.md_deep_orange_200,
-                R.color.md_deep_orange_300, R.color.md_deep_orange_400,
-                R.color.md_deep_orange_500, R.color.md_deep_orange_600,
-                R.color.md_deep_orange_700, R.color.md_orange_800);
-        binding.squareRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+binding.pullToRefresh.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+    @Override
+    public void onRefresh() {
+        binding.pullToRefresh.postDelayed(new Runnable() {
             @Override
-            public void onRefresh() {
-                Log.d("===", "onRefresh: 9999999999");
-                getSquareData();
+            public void run() {
+                binding.pullToRefresh.setRefreshing(false);
             }
-        });
+        }, 800);
+    }
+});
     }
 
     @Override
     public void hideRefresh() {
-        if (binding.squareRefresh.isRefreshing()) {
-            binding.squareRefresh.setRefreshing(false);
-        }
+    binding.pullToRefresh.setRefreshing(false);
     }
 }
