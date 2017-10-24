@@ -51,11 +51,7 @@
         <!-- </meta-data> -->
         <!-- </provider> -->
 
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="596853514544cb1b07000ddb">
-        </meta-data>
-
+        
         <activity
             android:name=".units.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -72,7 +68,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="tencent1106280483"/>
+                <data android:scheme="******"/>
             </intent-filter>
         </activity>
         <activity
