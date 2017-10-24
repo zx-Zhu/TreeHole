@@ -20,12 +20,15 @@ public class MyRecyclerAdapter< T extends ViewDataBinding> extends RecyclerView.
     @LayoutRes
     private int layout;
     private BindView<T> bindView;
+    private String str = "AAA#BBB#CCC";
+
 
     public MyRecyclerAdapter(Context context, @LayoutRes int itemLayout, int size, BindView<T> bindView) {
         this.context = context;
         this.layout = itemLayout;
         this.bindView = bindView;
         this.size = size;
+        str.split(";");
     }
 
 

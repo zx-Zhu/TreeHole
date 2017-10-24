@@ -29,7 +29,8 @@ public class LoginPresenter implements ILoginPresenter {
     public LoginPresenter(ILoginActivity activity) {
         loginActivity = activity;
         PlatformConfig.setQQZone(Apis.QQId, Apis.QQKey);
-        PlatformConfig.setSinaWeibo(Apis.WbId, Apis.WbId,Apis.WbCallBack);
+        PlatformConfig.setSinaWeibo(Apis.WbId, Apis.WbKey
+                ,Apis.WbCallBack);
         Config.DEBUG = true;
     }
     @Override
@@ -48,6 +49,8 @@ public class LoginPresenter implements ILoginPresenter {
                 loginActivity.hideDialog();
                 if (e.getCode() == 211) {
                     loginActivity.toast("用户名或密码错误");
+                } else {
+                    loginActivity.toast("登录失败");
                 }
                 Log.d("loginPresenter", "onError: "+ e);
             }

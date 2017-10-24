@@ -83,7 +83,8 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
             Log.d("zxccvb", "setList: "+list.size());
         }
         Log.d("zxccvb", "onBindViewHolder: "+list.size());
-        if (list != null) {
+        if (list != null && list.size() != 0) {
+            binding.noneMessage.setVisibility(View.GONE);
             binding.listMessage.setAdapter(new MyRecyclerAdapter<ItemMessageBinding>(getActivity(), R.layout.item_message
                     , list.size(), new MyRecyclerAdapter.BindView<ItemMessageBinding>() {
                 @Override
@@ -175,7 +176,7 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
                     b.imgMessageItem.setImageResource(R.drawable.defult_head);
                 }
             }));
-        } else toast("还没有对话消息");
+        } else binding.noneMessage.setVisibility(View.VISIBLE);
     }
 
     public void setRefresh() {

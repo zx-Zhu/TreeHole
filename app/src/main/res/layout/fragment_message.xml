@@ -7,6 +7,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/none_message"
+            android:text="没有对话消息"
+            android:visibility="gone"
+            android:textSize="@dimen/app_text_size_large"/>
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refresh_message"
             android:layout_width="match_parent"
@@ -14,7 +23,8 @@
             android:background="@color/md_blue_grey_50"
             tools:context="com.zxzhu.show.view.fragments.MessageFragment">
 
-            <!-- TODO: Update blank fragment layout -->
+
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list_message"
                 android:layout_width="match_parent"
