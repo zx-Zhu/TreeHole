@@ -8,7 +8,6 @@
         android:orientation="vertical">
 
 
-
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refresh_message"
             android:layout_width="match_parent"
@@ -24,39 +23,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/none_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="没有对话消息"
-                        android:textSize="@dimen/app_text_size_large"
-                        android:visibility="gone"/>
+
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
-                        android:text="  树洞官方号:"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/app_text_size_small"
-                        android:textColor="@color/textMid"/>
+                        android:text="  树洞官方号:"
+                        android:textColor="@color/textMid"
+                        android:textSize="@dimen/app_text_size_small"/>
+
+
+
 
 
                     <LinearLayout
                         android:id="@+id/recommend_layout"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:background="@color/md_white_1000"
                         android:layout_marginBottom="1dp"
+                        android:background="@color/md_white_1000"
                         android:orientation="horizontal">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/img_cmd"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@mipmap/ic_launcher"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"/>
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/ic_launcher"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -91,9 +86,9 @@
                             android:id="@+id/time_cmd"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_marginRight="5dp"
                             android:textColor="@color/md_blue_300"
                             android:textSize="@dimen/app_text_size_small"
                             />
@@ -101,20 +96,29 @@
                     </LinearLayout>
 
 
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
-                        android:text="  私信:"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/app_text_size_small"
-                        android:textColor="@color/textMid"/>
+                        android:text="  私信:"
+                        android:textColor="@color/textMid"
+                        android:textSize="@dimen/app_text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/none_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="没有对话消息"
+                        android:textSize="@dimen/app_text_size_large"
+                        android:visibility="gone"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:background="@color/md_white_1000"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:background="@color/md_white_1000">
+
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/list_message"

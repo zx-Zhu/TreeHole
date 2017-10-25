@@ -80,6 +80,7 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
     public void setList(final List<AVIMConversation> list) {
         Log.d("zxccvb", "setList: "+list.size());
         for (int i = 0; i<list.size();i++) {
+            Log.d("zhuzhuzhu", "setList: "+list.get(i).getName());
             if (list.get(i).getLastMessage() == null){
                 list.remove(i);
                 i -= 1;
@@ -97,7 +98,6 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
                     final int i = list.size() - position - 1;
                     String type = "";
                     JSONObject json = null;
-                    Log.d("zxccvb", "123123: "+list.get(i).getLastMessage());
 //                    Log.d("zxccvb", list.size()+"onBindViewHolder: " + list.get(i).getLastMessage().getContent());
                     try {
                         if (list.get(i).getLastMessage() != null) {
