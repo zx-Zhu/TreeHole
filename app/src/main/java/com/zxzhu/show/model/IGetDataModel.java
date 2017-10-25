@@ -16,4 +16,5 @@ public interface IGetDataModel {
     void getFollowers(String id, GetDataModel.GetDataListener<AVUser> listener);
     void getFollowees(String id, GetDataModel.GetDataListener<AVUser> listener);
     void getRecently(String username, GetDataModel.GetDataListener<AVObject> listener);
+    void getRollPics(GetDataModel.GetDataListener<AVObject> listener);
 }

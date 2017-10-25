@@ -2,9 +2,7 @@ package com.zxzhu.show.view.fragments;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
@@ -16,12 +14,14 @@ import com.bumptech.glide.Glide;
 import com.yalantis.phoenix.PullToRefreshView;
 import com.zxzhu.show.R;
 import com.zxzhu.show.adapters.MyRecyclerAdapter;
+import com.zxzhu.show.adapters.RollPicsAdapter;
 import com.zxzhu.show.databinding.FragmentSquareBinding;
 import com.zxzhu.show.databinding.ItemSquareBinding;
 import com.zxzhu.show.model.GetDataModel;
 import com.zxzhu.show.presenter.ISquarePresenter;
 import com.zxzhu.show.presenter.SquarePresenter;
 import com.zxzhu.show.units.AudioTrackManager;
+import com.zxzhu.show.units.MyLayoutManager;
 import com.zxzhu.show.units.base.BaseFragment;
 import com.zxzhu.show.view.SquareContentActivity;
 import com.zxzhu.show.view.fragments.inference.ISquareFragment;
@@ -41,6 +41,7 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
         binding.listSquare.setLayoutManager(new LinearLayoutManager(getActivity()));
         getSquareData();
         setRefresh();
+        presenter.getRollPics();
     }
 
     @Override
@@ -50,7 +51,9 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
 
     @Override
     public void setList(final List<AVObject> list) {
-        binding.listSquare.setLayoutManager(new LinearLayoutManager(getActivity()));
+        MyLayoutManager manager = new MyLayoutManager(getContext());
+        manager.setScrollEnabled(false);
+        binding.listSquare.setLayoutManager(manager);
         binding.listSquare.setAdapter(new MyRecyclerAdapter<ItemSquareBinding>(getActivity(), R.layout.item_square,
                 list.size(), new MyRecyclerAdapter.BindView<ItemSquareBinding>() {
             @Override
@@ -214,22 +217,23 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
         presenter.getSquareData();
     }
 
-    void setRefresh() {
-binding.pullToRefresh.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-    @Override
-    public void onRefresh() {
-        binding.pullToRefresh.postDelayed(new Runnable() {
+    private void setRefresh() {
+        binding.pullToRefresh.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
-            public void run() {
-                binding.pullToRefresh.setRefreshing(false);
+            public void onRefresh() {
+                presenter.getRollPics();
+                presenter.getSquareData();
             }
-        }, 800);
-    }
-});
+        });
     }
 
     @Override
     public void hideRefresh() {
-    binding.pullToRefresh.setRefreshing(false);
+        binding.pullToRefresh.setRefreshing(false);
+    }
+
+    @Override
+    public void setRollPics(final List<AVObject> list) {
+        binding.rollImages.setAdapter(new RollPicsAdapter(list));
     }
 }

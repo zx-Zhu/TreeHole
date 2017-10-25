@@ -17,7 +17,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#65000000">
+                >
 
                 <ImageView
                     android:id="@+id/head_user"
@@ -25,6 +25,12 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"/>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#60000000"/>
+
+                
                 <TextView
                     android:id="@+id/nickname_user"
                     android:layout_width="wrap_content"

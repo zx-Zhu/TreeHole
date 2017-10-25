@@ -19,7 +19,9 @@ import java.util.List;
 public class GetDataModel implements IGetDataModel {
     public interface GetDataListener<T> {
         void onStart();
+
         void onError(AVException e);
+
         void onFinish(List<T> list);
     }
 
@@ -27,14 +29,14 @@ public class GetDataModel implements IGetDataModel {
     public void getSquareData(final GetDataListener<AVObject> listener) {
         listener.onStart();
         AVQuery<AVObject> query = new AVQuery<>("Square");
-        query.whereContains("username","");
+        query.whereContains("username", "");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 if (e == null) {
                     listener.onFinish(list);
                 } else {
-                    Log.d("]]]", "done: "+e);
+                    Log.d("]]]", "done: " + e);
                     listener.onError(e);
                 }
             }
@@ -42,12 +44,11 @@ public class GetDataModel implements IGetDataModel {
     }
 
 
-
     @Override
     public void gerUserData(String username, final GetDataListener<AVUser> listener) {
         listener.onStart();
         AVQuery<AVUser> query = new AVQuery<>("_User");
-        query.whereEqualTo("username",username);
+        query.whereEqualTo("username", username);
         query.findInBackground(new FindCallback<AVUser>() {
             @Override
             public void done(List<AVUser> list, AVException e) {
@@ -69,7 +70,7 @@ public class GetDataModel implements IGetDataModel {
                 if (e == null) {
                     listener.done(object);
                 } else {
-                    Log.d("'''", "done: "+e.getMessage());
+                    Log.d("'''", "done: " + e.getMessage());
                 }
             }
         });
@@ -88,7 +89,7 @@ public class GetDataModel implements IGetDataModel {
                 if (e == null) {
                     listener.done(object);
                 } else {
-                    Log.d("'''", "done: "+e.getMessage());
+                    Log.d("'''", "done: " + e.getMessage());
                 }
             }
         });
@@ -108,7 +109,7 @@ public class GetDataModel implements IGetDataModel {
     @Override
     public void getFollowers(String id, final GetDataListener<AVUser> listener) {
         listener.onStart();
-        AVQuery<AVUser> followerQuery = AVUser.followerQuery(id,AVUser.class);
+        AVQuery<AVUser> followerQuery = AVUser.followerQuery(id, AVUser.class);
         followerQuery.findInBackground(new FindCallback<AVUser>() {
             @Override
             public void done(List<AVUser> avObjects, AVException e) {
@@ -124,7 +125,7 @@ public class GetDataModel implements IGetDataModel {
     @Override
     public void getFollowees(String id, final GetDataListener<AVUser> listener) {
         listener.onStart();
-        AVQuery<AVUser> followerQuery = AVUser.followeeQuery(id,AVUser.class);
+        AVQuery<AVUser> followerQuery = AVUser.followeeQuery(id, AVUser.class);
         followerQuery.findInBackground(new FindCallback<AVUser>() {
             @Override
             public void done(List<AVUser> avObjects, AVException e) {
@@ -141,15 +142,32 @@ public class GetDataModel implements IGetDataModel {
     public void getRecently(String username, final GetDataListener<AVObject> listener) {
         listener.onStart();
         AVQuery<AVObject> query = new AVQuery<>("Square");
-        query.whereEqualTo("username",username);
+        query.whereEqualTo("username", username);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 if (e == null) {
-                    Log.d("]]]", "done: "+list.size());
+                    Log.d("]]]", "done: " + list.size());
                     listener.onFinish(list);
                 } else {
-                    Log.d("]]]", "done: "+e);
+                    Log.d("]]]", "done: " + e);
+                    listener.onError(e);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getRollPics(final GetDataListener<AVObject> listener) {
+        listener.onStart();
+        AVQuery<AVObject> query = new AVQuery<>("RollPics");
+        query.orderByAscending("createdAt");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if (e == null) {
+                    listener.onFinish(list);
+                } else {
                     listener.onError(e);
                 }
             }

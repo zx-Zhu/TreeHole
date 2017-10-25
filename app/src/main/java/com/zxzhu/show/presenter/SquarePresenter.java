@@ -54,5 +54,25 @@ public class SquarePresenter implements ISquarePresenter{
         model.gerUserData(username,listener);
     }
 
+    @Override
+    public void getRollPics() {
+        model.getRollPics(new GetDataModel.GetDataListener<AVObject>() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onError(AVException e) {
+
+            }
+
+            @Override
+            public void onFinish(List<AVObject> list) {
+                fragment.setRollPics(list);
+            }
+        });
+    }
+
 
 }

@@ -16,4 +16,5 @@ public interface ISquareFragment {
     void toast(String str);
     Activity getActivity();
     void hideRefresh();
+    void setRollPics(List<AVObject> list);
 }

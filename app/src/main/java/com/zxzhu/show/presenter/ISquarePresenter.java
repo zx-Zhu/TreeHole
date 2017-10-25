@@ -10,5 +10,5 @@ import com.zxzhu.show.model.GetDataModel;
 public interface ISquarePresenter {
     void getSquareData();
     void getUserData(String username, GetDataModel.GetDataListener<AVUser> listener);
-
+    void getRollPics();
 }
