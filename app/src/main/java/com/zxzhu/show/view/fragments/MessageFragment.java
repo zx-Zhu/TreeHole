@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMConversation;
@@ -24,11 +25,13 @@ import com.zxzhu.show.presenter.IMessagePresenter;
 import com.zxzhu.show.presenter.MessagePresenter;
 import com.zxzhu.show.units.base.BaseFragment;
 import com.zxzhu.show.view.ChatActivity;
+import com.zxzhu.show.view.CmdsActivity;
 import com.zxzhu.show.view.fragments.inference.IMessageFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +46,7 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
         setIM();
         binding.refreshMessage.setRefreshing(true);
         presenter.getConversation();
+        presenter.getCmds();
         super.onResume();
     }
 
@@ -177,6 +181,31 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
                 }
             }));
         } else binding.noneMessage.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setCmd(final List<AVObject> list) {
+        AVObject first = list.get(0);
+        binding.contentCmd.setText(first.get("text").toString());
+        Date updateAt = first.getUpdatedAt();
+        Date now = new Date(System.currentTimeMillis());
+        DateFormat dayFormat = new SimpleDateFormat("MM月dd日");
+        DateFormat timeFormat = new SimpleDateFormat("今天");
+        String time = null;
+        if (now.getDay() == updateAt.getDay()) {
+            time = timeFormat.format(updateAt);
+        } else {
+            time = dayFormat.format(updateAt);
+        }
+        binding.timeCmd.setText(time);
+        binding.recommendLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CmdsActivity.class);
+                intent.putExtra("list", (Serializable) list );
+                startActivity(intent);
+            }
+        });
     }
 
     public void setRefresh() {

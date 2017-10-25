@@ -2,6 +2,8 @@ package com.zxzhu.show.presenter;
 
 import android.util.Log;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMException;
@@ -22,6 +24,7 @@ public class MessagePresenter implements IMessagePresenter {
 
     public MessagePresenter(IMessageFragment fragment){
         this.fragment = fragment;
+        model = new GetDataModel();
     }
 
     @Override
@@ -51,7 +54,27 @@ public class MessagePresenter implements IMessagePresenter {
     }
     @Override
     public void getUserData(String username, GetDataModel.GetDataListener<AVUser> listener){
-        model = new GetDataModel();
+
         model.gerUserData(username,listener);
+    }
+
+    @Override
+    public void getCmds() {
+        model.getRollPics(new GetDataModel.GetDataListener<AVObject>() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onError(AVException e) {
+
+            }
+
+            @Override
+            public void onFinish(List<AVObject> list) {
+                fragment.setCmd(list);
+            }
+        });
     }
 }

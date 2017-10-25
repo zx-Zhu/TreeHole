@@ -174,5 +174,4 @@ public class GetDataModel implements IGetDataModel {
         });
     }
 
-
 }

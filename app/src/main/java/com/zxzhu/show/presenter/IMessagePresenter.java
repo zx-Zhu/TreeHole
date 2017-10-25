@@ -12,4 +12,5 @@ public interface IMessagePresenter {
     void getMessage(MessageModel.MessageListener listener);
     void getConversation();
     void getUserData(String username, GetDataModel.GetDataListener<AVUser> listener);
+    void getCmds();
 }

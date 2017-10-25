@@ -30,7 +30,7 @@
                     android:layout_height="match_parent"
                     android:background="#60000000"/>
 
-                
+
                 <TextView
                     android:id="@+id/nickname_user"
                     android:layout_width="wrap_content"
