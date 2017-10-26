@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Teller.iml" filepath="$PROJECT_DIR$/Teller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TreeHole.iml" filepath="$PROJECT_DIR$/TreeHole.iml" />
+      <module fileurl="file://C:\Users\HP\AndroidStudioProjects\Teller007\Teller.iml" filepath="C:\Users\HP\AndroidStudioProjects\Teller007\Teller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Teller007.iml" filepath="$PROJECT_DIR$/Teller007.iml" />
+      <module fileurl="file://C:\Users\HP\AndroidStudioProjects\Teller007\TreeHole.iml" filepath="C:\Users\HP\AndroidStudioProjects\Teller007\TreeHole.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\HP\AndroidStudioProjects\Teller007\app\app.iml" filepath="C:\Users\HP\AndroidStudioProjects\Teller007\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/leancloudlivekit/leancloudlivekit.iml" filepath="$PROJECT_DIR$/leancloudlivekit/leancloudlivekit.iml" />
+      <module fileurl="file://C:\Users\HP\AndroidStudioProjects\Teller007\leancloudlivekit\leancloudlivekit.iml" filepath="C:\Users\HP\AndroidStudioProjects\Teller007\leancloudlivekit\leancloudlivekit.iml" />
     </modules>
   </component>
 </project>

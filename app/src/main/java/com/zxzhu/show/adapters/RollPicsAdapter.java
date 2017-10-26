@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
@@ -32,6 +33,7 @@ public class RollPicsAdapter extends StaticPagerAdapter {
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         Glide.with(container.getContext()).load(pic.getUrl()).into(view);
+
         if (obj.get("url") != null) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

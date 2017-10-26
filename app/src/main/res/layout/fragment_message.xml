@@ -32,11 +32,6 @@
                         android:text="  树洞官方号:"
                         android:textColor="@color/textMid"
                         android:textSize="@dimen/app_text_size_small"/>
-
-
-
-
-
                     <LinearLayout
                         android:id="@+id/recommend_layout"
                         android:layout_width="match_parent"

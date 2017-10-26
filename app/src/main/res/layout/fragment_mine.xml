@@ -63,76 +63,134 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/about_me"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="与我相关"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
 
-        <TextView
-            android:id="@+id/change_data"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="修改资料"
+            android:layout_marginTop="15dp"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
+            android:background="@color/md_white_1000"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/xiugai"
+                />
+            <TextView
+                android:id="@+id/change_data"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="修改资料"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textColor="@color/textMid"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/md_white_1000"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/mima"
+                />
+            <TextView
+                android:id="@+id/change_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="修改密码"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textColor="@color/textMid"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
-        <TextView
-            android:id="@+id/change_password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="修改密码"
-            android:layout_marginTop="1dp"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
             android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/fankui"
+                />
+            <TextView
+                android:id="@+id/opinion"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="意见反馈"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textColor="@color/textMid"/>
+
+        </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/opinion"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="意见反馈"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
-        <TextView
-            android:id="@+id/share"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="分享软件"
-            android:gravity="center_vertical"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="10dp"
-            android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="关于"
-            android:gravity="center_vertical"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="10dp"
-            android:background="@color/md_white_1000"
-            android:textSize="@dimen/app_text_size_medium"
-            android:textColor="@color/textMid"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:background="@color/md_white_1000"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/fenxiang"
+                />
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="分享软件"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textColor="@color/textMid"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:background="@color/md_white_1000"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/guanyu"
+                />
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="关于"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/app_text_size_medium"
+                android:textColor="@color/textMid"/>
+
+        </LinearLayout>
         <Button
             android:id="@+id/quiet"
             android:background="@drawable/button_orange"
