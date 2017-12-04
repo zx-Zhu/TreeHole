@@ -63,6 +63,12 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
                 final String objectId = list.get(i).getObjectId();
                 AVFile avFile = (AVFile) list.get(i).get("picMini");
                 Glide.with(getActivity()).load(avFile.getUrl()).into(b.imgItemSquare);
+                String str = "还没有评论哦~";
+                if (!list.get(i).getJSONArray("comment_tx").isNull(0)) {
+                    str = list.get(i).getJSONArray("comment_tx").getString(0);
+                    str = str.substring(str.indexOf("{") + 1, str.lastIndexOf("}"));
+                }
+                b.content.setText(str);
                 b.description.setText(list.get(i).get("description").toString());
                 final String username = (String) list.get(i).get("username");
                 final String[] userData = {"", ""};
@@ -153,7 +159,6 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
 
                 if ((int) (list.get(i).get("type")) == 1) {
                     b.btnAudio.setColorFilter(Color.parseColor("#287c2e"));
-                    b.btnAudio.setRecordTime(time);
                     final String[] audioPath = {""};
                     AudioTrackManager.getInstance().loadAudio(audio.getUrl(), audio.getName().toString(), new AudioTrackManager.LoadAudioListener() {
                         @Override
@@ -182,7 +187,6 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
                     });
                 } else {
                     b.btnAudio.setColorFilter(Color.LTGRAY);
-                    b.btnAudio.setRecordTime("No Audio");
                 }
                 b.itemLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -206,7 +210,6 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
                 b.imgHead.setImageResource(R.drawable.defult_head);
                 b.imgFavor.setColorFilter(Color.LTGRAY);
                 b.btnAudio.setColorFilter(Color.LTGRAY);
-                b.btnAudio.setRecordTime("");
             }
         }));
     }

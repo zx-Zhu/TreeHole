@@ -1,127 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/item_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:background="@color/md_white_1000"
-        android:layout_margin="1dp"
         android:orientation="vertical">
-        <FrameLayout
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
+            android:layout_height="1dp"
+            android:background="@color/md_blue_grey_50"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_head"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    />
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/md_green_500"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text=" 来自主题：树洞精品"
+                        android:textColor="@color/textLight"
+                        android:textSize="@dimen/app_text_size_xsmall"/>
+
+                </LinearLayout>
+
 
                 <TextView
-                    android:id="@+id/nickname_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/textDeep"
+                    android:textSize="@dimen/app_text_size_medium"/>
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="心理学是一门研究人类以及其他动物的心理现象、精神功能和行为的科学，既是一门理论学科，也是一门应用学科。包括理论心理学与应用心理学两大领域。心理学研究涉及知觉、认知、情绪、人格、行为和人际关系等众多领域，也与日常生活的许多领域——家庭、教育、健康等发生关系。"
                     android:textColor="@color/textMid"
                     android:textSize="@dimen/app_text_size_small"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/img_head"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                        <TextView
+                            android:id="@+id/nickname_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/textMid"
+                            android:textSize="@dimen/app_text_size_small"/>
+
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img_favor"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/favor"/>
+
+                        <TextView
+                            android:id="@+id/favor_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/textLight"
+                            android:textSize="@dimen/app_text_size_small"/>
+
+
+                        <ImageView
+                            android:id="@+id/img_comment"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/comment"/>
+
+                        <TextView
+                            android:id="@+id/comment_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/textLight"
+                            android:layout_marginRight="10dp"
+                            android:textSize="@dimen/app_text_size_small"/>
+
+                        <ImageView
+                            android:id="@+id/btn_audio"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/audio_content"/>
+                    </LinearLayout>
+                </FrameLayout>
             </LinearLayout>
 
 
-        </FrameLayout>
-        <com.zxzhu.show.units.MyImageView
-            android:id="@+id/img_item_square"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:scaleType="centerCrop"
-            app:roundHeight="3dp"
-            app:roundWidth="3dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="5"
-                android:ellipsize="end"
-                android:lineSpacingMultiplier="1.2"
-                android:maxLines="7"
-                android:textColor="@color/md_teal_900"
-                android:textSize="@dimen/app_text_size_medium" />
-
-            <com.zxzhu.show.units.RecordButton
-                android:id="@+id/btn_audio"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:background="#00ffffff"
-                android:padding="5dp"
+            <com.zxzhu.show.units.MyImageView
+                android:id="@+id/img_item_square"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/voice_public" />
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                app:roundHeight="3dp"
+                app:roundWidth="3dp"/>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:gravity="center">
 
-            <ImageView
-                android:id="@+id/img_favor"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="6dp"
-                android:src="@drawable/favor"/>
-
-            <TextView
-                android:id="@+id/favor_num"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="@color/textLight"
-                android:textSize="@dimen/app_text_size_small"/>
-
-
-            <ImageView
-                android:id="@+id/img_comment"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="6dp"
-                android:src="@drawable/comment"/>
-
-            <TextView
-                android:id="@+id/comment_num"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="@color/textLight"
-                android:textSize="@dimen/app_text_size_small"/>
-        </LinearLayout>
     </LinearLayout>
 </layout>
