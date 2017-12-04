@@ -46,8 +46,10 @@ RedRock最终考核了
 1. DataBinding绑定数据，降低乏味操作并且无反射，一定程度优化性能
 2. MVP结构，思路清晰，解耦
 3. RxJava+Retrofit 网络框架，稳定高效
-4. Leancloud云服务器 加速开发，稳定安全
+4. java web + 阿里云 + Leancloud 后台解决方案
 5. 热更新，修改更新更便捷
+6. face++ 机器学习应用
+7. Android自定义相机,音频流及时处理,方便后期处理
 
 * ### 界面截图：
 
