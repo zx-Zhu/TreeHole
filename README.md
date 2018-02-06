@@ -48,7 +48,7 @@ RedRock最终考核了
 3. RxJava+Retrofit 网络框架，稳定高效
 4. java web + 阿里云 + Leancloud 后台解决方案
 5. 热更新，修改更新更便捷
-6. face++ 机器学习应用
+6. face++ 图像识别应用
 7. Android自定义相机,音频流及时处理,方便后期处理
 
 * ### 界面截图：
