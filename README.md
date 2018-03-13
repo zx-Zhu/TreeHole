@@ -13,7 +13,7 @@ RedRock最终考核了
 
 时间仓促部分功能不完善，请期待下一版
 
-[apk传送门](http://47.94.206.39/teller/teller.apk)
+[apk传送门](http://extra.betterzzx.com/tree.apk)
 
 * ### 《讲述人》
 
