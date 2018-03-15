@@ -45,8 +45,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.zxzhu.show.units.SystemUtil.secToTime;
-
 public class ChatActivity extends BaseActivity implements IChatActivity, MessageModel.MessageListener {
     private ActivityChatBinding binding;
     private String user, id, leftUrl, rightUrl;
@@ -233,7 +231,7 @@ public class ChatActivity extends BaseActivity implements IChatActivity, Message
                                 recordManager.stopRecord();
                                 binding.recordBtn.setText("按住  录音");
                                 binding.recordBtn.setTextColor(Color.parseColor("#999999"));
-                                String time = secToTime((int) (endTime - startTime) / 1000);
+                                String time = SystemUtil.secToTime((int) (endTime - startTime) / 1000);
                                 Log.d("??????", "onTouch: "+time);
                                 sendAudioMessage(time);
                             } else if (endTime - startTime < 500) {

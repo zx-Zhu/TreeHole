@@ -45,6 +45,7 @@ public class SquarePresenter implements ISquarePresenter{
             public void onFinish(List list) {
                 fragment.hideRefresh();
                 fragment.setList(list);
+
             }
         });
     }
@@ -59,7 +60,6 @@ public class SquarePresenter implements ISquarePresenter{
         model.getRollPics(new GetDataModel.GetDataListener<AVObject>() {
             @Override
             public void onStart() {
-
             }
 
             @Override

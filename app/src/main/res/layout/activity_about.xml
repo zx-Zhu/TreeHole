@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="讲述人"
+            android:text="树洞"
             android:textColor="@color/textDeep"
             android:textSize="@dimen/app_text_size_large"
             android:gravity="center"
@@ -35,15 +35,16 @@
             android:gravity="center"
             android:textSize="@dimen/app_text_size_small"
             android:textColor="@color/textMid"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="50dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:layout_marginTop="20dp"
             android:lineSpacingMultiplier="1.3"
-            android:textColor="@color/textLight"
-            android:text="first version\n时间仓促并不完善\n但却是很用心在做的一款app\n请期待下一版\n感谢每一个看到这里的朋友\n感谢给过我帮助的每位学长学姐\n感谢RedRock"/>
+            android:text="一款基于私密社交平台的心里倾诉app"
+            android:textColor="@color/textLight"/>
 
         <TextView
             android:id="@+id/check_update"

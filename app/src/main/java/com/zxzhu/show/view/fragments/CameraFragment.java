@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.net.Uri;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -118,15 +117,6 @@ public class CameraFragment extends BaseFragment implements SurfaceHolder.Callba
 
     }
 
-
-    private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            int what = msg.what;
-            switch (what) {
-
-            }
-        }
-    };
 
     @Override
     public void onClick(View v) {

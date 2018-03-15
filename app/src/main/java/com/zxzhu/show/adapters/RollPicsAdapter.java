@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
@@ -39,7 +38,7 @@ public class RollPicsAdapter extends StaticPagerAdapter {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(container.getContext(), WebActivity.class);
-                    intent.putExtra("title", obj.get("text").toString());
+                    intent.putExtra("text", obj.get("text").toString());
                     intent.putExtra("url", obj.get("url").toString());
                     container.getContext().startActivity(intent);
                 }

@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_blue_50"
         android:orientation="vertical"
         tools:context="com.zxzhu.show.view.SquarePublicActivity">
 
@@ -115,6 +114,15 @@
             android:onClick="publishClick"
             android:text="发   布"
             android:textColor="@color/md_white_1000"/>
+
+        <CheckBox
+            android:id="@+id/isAnonymity"
+            android:layout_marginTop="20dp"
+            android:text="匿名发布"
+            android:textColor="@color/md_grey_600"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

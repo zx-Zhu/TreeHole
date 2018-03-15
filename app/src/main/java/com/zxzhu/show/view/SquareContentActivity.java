@@ -267,6 +267,11 @@ public class SquareContentActivity extends BaseActivity implements ISquareConten
                 }
             });
             return;
+        } else if (username.equals("匿名用户")){
+            binding.focusImgContent.setVisibility(View.GONE);
+            binding.focusTxContent.setText("");
+            userId = AVUser.getCurrentUser().getObjectId();
+            return;
         }
         presenter.getFollowees(myName, new GetDataModel.GetDataListener<AVUser>() {
             @Override

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.zxzhu.show.Beans.ImgSenceBean;
 import com.zxzhu.show.R;
 import com.zxzhu.show.databinding.ActivitySquarePublicBinding;
@@ -41,8 +41,10 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
     private int TYPE = 0;
     private ProgressDialog dialog;
     //语音操作对象
+
     private MediaRecorder mRecorder = null;
     private String mRecordPath = null;
+
 
     @Override
     protected void initData() {
@@ -52,8 +54,8 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
         picPath = intent.getStringExtra("pic");
         miniPicPath = intent.getStringExtra("picMini");
         Log.d("qqq", "initData: "+picPath);
-        Glide.with(this).load(picPath).into(binding.picPublish);
-        presenter.getPicInfo(ImageBase64.imgToBase64(this, picPath));
+        binding.picPublish.setImageURI(Uri.parse(miniPicPath));
+        presenter.getPicInfo(ImageBase64.imgToBase64(this, picPath), getAssets());
         setVoice();
         setBar();
     }
@@ -78,10 +80,11 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
 
     @Override
     public void publish() {
+        Boolean isChecked = binding.isAnonymity.isChecked();
         if (mRecordPath != null) {
-            presenter.upLoad(this, picPath, miniPicPath, getDescription(), time, mRecordPath);
+            presenter.upLoad(this, picPath, miniPicPath, getDescription(), time, mRecordPath, isChecked);
         } else {
-            presenter.upLoad(this,picPath,miniPicPath,getDescription());
+            presenter.upLoad(this,picPath,miniPicPath,getDescription(), isChecked);
         }
     }
 
@@ -184,9 +187,6 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
         List<ImgSenceBean.ObjectsBean> objs = imgSenceBean.getObjects();
         List<ImgSenceBean.SencesBean> scenes = imgSenceBean.getScenes();
         String tx = null;
-//        for (ImgSenceBean.ObjectsBean bean : objs) {
-//            tx = tx+" " +bean.getValue();
-//        }
         for (ImgSenceBean.SencesBean bean : scenes) {
             tx = tx+" "+ bean.getValue();
         }
@@ -203,6 +203,7 @@ public class SquarePublicActivity extends BaseActivity implements ISquarePublicA
     public void back(){
         finish();
     }
+
 
 
     @Override

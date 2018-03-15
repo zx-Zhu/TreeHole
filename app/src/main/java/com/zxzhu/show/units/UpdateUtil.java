@@ -62,7 +62,7 @@ public class UpdateUtil {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //确定
-                download(context, "http://47.94.206.39/teller/teller.apk");
+                download(context, "http://extra.betterzzx.com/tree.apk");
                 Toast.makeText(context, "开始下载, 请注意通知栏", Toast.LENGTH_SHORT).show();
             }
         });
@@ -97,8 +97,8 @@ public class UpdateUtil {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         String path = "/Teller/update/";
         if (setFolder(path)) {
-            request.setDestinationInExternalPublicDir(path, "Teller"+System.currentTimeMillis()+".apk");
-            request.setTitle("Teller");
+            request.setDestinationInExternalPublicDir(path, "TreeHole"+System.currentTimeMillis()+".apk");
+            request.setTitle("TreeHole");
             request.setDescription("正在下载最新版");
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
             long downloadId = downloadManager.enqueue(request);

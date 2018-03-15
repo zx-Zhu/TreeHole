@@ -39,7 +39,7 @@ public class UpLoadModel implements IUpLoadModel {
 
 
     @Override
-    public void upLoadPic(Context context, String picPath, String miniPicPath, String description, final UpLoadListener listener) {
+    public void upLoadPic(Context context, String picPath, String miniPicPath, String description, Boolean isAnonymity, final UpLoadListener listener) {
         listener.onStart();
         AVObject avObject = new AVObject("Square");
         AVFile pic = null, picMini = null;
@@ -52,7 +52,8 @@ public class UpLoadModel implements IUpLoadModel {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        avObject.put("username", USERNAME);
+        if (isAnonymity) avObject.put("username", "匿名用户");
+        else avObject.put("username", USERNAME);
         avObject.put("content", pic);
         avObject.put("picMini", picMini);
         avObject.put("type", PIC);
@@ -91,7 +92,7 @@ public class UpLoadModel implements IUpLoadModel {
     }
 
     @Override
-    public void upLoadVoice(Context context, String picPath, String miniPicPath, String description, String voicePath, String audioTime, final UpLoadListener listener) {
+    public void upLoadVoice(Context context, String picPath, String miniPicPath, String description, String voicePath, String audioTime, Boolean isAnonymity, final UpLoadListener listener) {
         listener.onStart();
         AVObject avObject = new AVObject("Square");
         AVFile pic = null, picMini = null, voice = null;
@@ -106,7 +107,8 @@ public class UpLoadModel implements IUpLoadModel {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        avObject.put("username", USERNAME);
+        if (isAnonymity) avObject.put("username", "匿名用户");
+        else avObject.put("username", USERNAME);
         avObject.put("content", pic);
         avObject.put("picMini", picMini);
         avObject.put("voice", voice);
