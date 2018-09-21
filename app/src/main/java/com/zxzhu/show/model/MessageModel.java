@@ -118,8 +118,9 @@ public class MessageModel extends AVIMMessageHandler implements IMessageModel {
         AVIMConversationsQuery avimConversationsQuery = self.getConversationsQuery();
 //        avimConversationsQuery.whereContains("name", AVUser.getCurrentUser().getUsername().toString());
         avimConversationsQuery.setWithLastMessagesRefreshed(true);
+        avimConversationsQuery.limit(100);
         avimConversationsQuery.orderByAscending("updatedAt");
-        avimConversationsQuery.setQueryPolicy(AVQuery.CachePolicy.NETWORK_ONLY);
+        avimConversationsQuery.setQueryPolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         avimConversationsQuery.findInBackground(new AVIMConversationQueryCallback() {
             @Override
             public void done(List<AVIMConversation> list, AVIMException e) {

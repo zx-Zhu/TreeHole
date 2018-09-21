@@ -28,10 +28,10 @@
             android:gravity="center"
             android:layout_marginTop="20dp"/>
         <TextView
+            android:id="@+id/verse_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="v1.1"
             android:gravity="center"
             android:textSize="@dimen/app_text_size_small"
             android:textColor="@color/textMid"/>

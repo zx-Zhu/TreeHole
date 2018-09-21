@@ -23,8 +23,7 @@ public class WelcomePresenter implements IwelcomePresenter {
     }
     @Override
     public void autoLogin(final AutoLoginListener listener) {
-        AVUser currentUser = AVUser.getCurrentUser();
-        if (currentUser != null) {
+        if (AVUser.getCurrentUser() != null) {
             listener.onSuccess();
         } else {
             listener.onFail();

@@ -15,26 +15,15 @@
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
-        android:name="com.zxzhu.show.App"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="树洞"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:versionCode="1"
-        android:versionName="1.1">
-
-        <meta-data
-            android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="24822199-1"/>
-        <meta-data
-            android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="f121f99cdf42c43201952be800e87e3a"/>
-        <meta-data
-            android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEwAIBADANBgkqhkiG9w0BAQEFAASCBKowggSmAgEAAoIBAQCWF+WPsmud9EgDesqtg8Oub2sncBgsw6vKERLYGagQDhCfmzmkOL2+wjdVf38P+xMMQ3/Ef/EgXE8kLwbWNXQVMMh0BbEithVU6EvFUtOqC88CKqEUWadt/XBirgOvz2x5c1t+jwFjCNo3vGMuAB71ZIIjotdyXQR+asGlaKJ1M255CPGIKKB5mDGvY9qIm3qf5CB6S0iSeIKItlZzI/MTw3t2nIod3uxAlf9PWpWloWU71UwB39Bdbn5g3ewIZEzBvS0dyB2SAn2NRB8R6w+Nz5EX3MFzKdwxa3OEjAKuuHWjlnRk521M97gmv/7DJvFFnR0S6lim2TsGteuV0Ch1AgMBAAECggEBAJLvZf6c7pm9cVpmtU/UdJap4L7FEAWSsPSqbkY8J7k/66o0beOE4MyEmWML47ojU2xoEAawMcA6XgfQOeMuhSvRjAt5HwYaNxveJX9RLIGF+evnC7Y+ZphYydLxBA7zAwCKnAFzwinPmsGBnZ6E48nb0UNNwZjl0uZnYJerrY8Jd3JQedMZE6zauRlZ6oRUyW+CarF1yHwDL4KQBg7YmDp5Nmf3JdFEd56+Oncd/zv3SOGxbUAmH1EeTL9XloRZZ3ErD/Et7tuQ2I3zx9i6JL9nUdTBfx1+LWpXVemsltp1YLzJbqEp1gSS2UFPMvyLV0BHFJvDMgIW9D7QHLDimIECgYEA9FCpTlDb+jVcSgJuZLL5y7erM+JSPuwFBa0Vf+00VQ7WJyviDbZ/giyLV7TxX0k6c8SO5QIsEQR26dkRtAdsHntcGAp+WPxG0ybK8DcN6LlFv3xAUbHru86TTJ8+VVhZSFz8ahTHFYkDYYzqQGy3RpSInaqqbtSpvxc7i4cXucUCgYEAnUWbEPiDyk5Lqo/sJdbIlIPc2sxOQnBWiX/ts6VT8PheSXElu+rWycHaZqd0+VHdtevHNWUeR1Gifqp2ep+iUlHUNayEs8fHWSpngelvmakZ8CPipdFDEAxh/p+DgpUvDQbYsB4GL8pd/XnvlSDfAjqoumsNMQYsXMwZlYujjvECgYEAvMMRfHPW8iOGMZxdRKpPe4ll2klzeDAM1UzcfqF7vHghF9S87BFjxOS7qEEh+JfwdH+aU+/wshk78wOGvQy7CXYQOnbpFcGcywl+5Ef1FCkJbaAHZddMpic+AYZLt87x9In7b86r3sSkextP5gTZOcwLHZ493jGrEPxXQj9XIm0CgYEAhhBhwTO3VGstwTVyfkb7MO6/A5yJUcVlX0y4Gh1i0tVFuqFDI09qzQ382OkCo82Pi5ZzeCa8itsiA4vX92vA+R9cIGzxqjcwzeeB2JJfWcN2ouhUOjmKS1Hi7ySW/Gejdh1R9b+CUpbVTE/3VU5yC/po/pBm7FVw16H8ZShlwmECgYEAqzF8mAopIAXEn4YjZ+IJlvgcdfFIiKKQbbsgKyXSt/uVHetPQrp8Cs1cdbENdfAQc987mGggtQpQHl25Cn129L++fr5zFmxVHYF/+RWY/wq781Oa21yjD53SKkd4jFYR0OatOjpHtuJcjcgrg6r6RsZ4DQoo0+LKthem0lElLf8="/>
-
+        android:versionCode="2"
+        android:versionName="2.1.0"
+        android:theme="@style/AppTheme">
         <activity android:name=".view.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -50,7 +39,6 @@
         </activity>
         <activity android:name=".view.SignActivity">
         </activity>
-
         <!-- <provider -->
         <!-- android:name="android.support.v4.content.FileProvider" -->
         <!-- android:authorities="com.zxzhu.show.fileprovider" -->
@@ -63,6 +51,11 @@
 
         <!-- </meta-data> -->
         <!-- </provider> -->
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="596853514544cb1b07000ddb">
+        </meta-data>
 
         <activity
             android:name=".units.WXEntryActivity"
@@ -80,7 +73,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="******"/>
+                <data android:scheme="tencent1106280483"/>
             </intent-filter>
         </activity>
         <activity
@@ -123,10 +116,8 @@
         </activity>
         <activity android:name=".view.AboutActivity">
         </activity>
-        <activity android:name=".view.WebActivity">
-        </activity>
-        <activity android:name=".view.CmdsActivity">
-        </activity>
+        <activity android:name=".view.CmdsActivity"/>
+        <activity android:name=".view.WebActivity"/>
     </application>
 
 </manifest>

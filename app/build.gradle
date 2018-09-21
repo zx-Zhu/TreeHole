@@ -16,8 +16,9 @@ android {
         applicationId "com.zxzhu.show"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.2"
+        versionCode 2
+        versionName "2.1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -34,8 +35,6 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             //混淆
             minifyEnabled true
-            //
-            multiDexEnabled true
             //Zipalign优化
             zipAlignEnabled true
             //友盟签名

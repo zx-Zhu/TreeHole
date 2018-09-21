@@ -1,8 +1,10 @@
 package com.zxzhu.show
 
 import android.app.Application
+import com.avos.avoscloud.AVOSCloud
 import com.taobao.sophix.PatchStatus
 import com.taobao.sophix.SophixManager
+import com.zxzhu.show.units.Apis
 
 /**
  * Created by zxzhu
@@ -14,6 +16,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AVOSCloud.initialize(this, Apis.LeanCloudId, Apis.LeanCloudKey)
+        AVOSCloud.setDebugLogEnabled(true)
         initSophix()
     }
 

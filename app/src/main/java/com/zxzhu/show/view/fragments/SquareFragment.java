@@ -62,6 +62,7 @@ public class SquareFragment extends BaseFragment implements ISquareFragment {
                 b.itemLayout.setTag(list.get(position).getObjectId());
                 final String objectId = list.get(i).getObjectId();
                 AVFile avFile = (AVFile) list.get(i).get("picMini");
+                Log.d("zzxUrlTest", avFile.getUrl());
                 Glide.with(getActivity()).load(avFile.getUrl()).into(b.imgItemSquare);
                 String str = "还没有评论哦~";
                 if (!list.get(i).getJSONArray("comment_tx").isNull(0)) {

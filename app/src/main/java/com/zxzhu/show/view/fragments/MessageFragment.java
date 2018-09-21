@@ -23,6 +23,7 @@ import com.zxzhu.show.model.GetDataModel;
 import com.zxzhu.show.model.MessageModel;
 import com.zxzhu.show.presenter.IMessagePresenter;
 import com.zxzhu.show.presenter.MessagePresenter;
+import com.zxzhu.show.units.MyLayoutManager;
 import com.zxzhu.show.units.base.BaseFragment;
 import com.zxzhu.show.view.ChatActivity;
 import com.zxzhu.show.view.CmdsActivity;
@@ -54,7 +55,7 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
     protected void initData() {
         binding = getDataBinding();
         presenter = new MessagePresenter(this);
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        MyLayoutManager manager = new MyLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.listMessage.setLayoutManager(manager);
 //        presenter.getConversation();
@@ -78,17 +79,17 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
 
     @Override
     public void setList(final List<AVIMConversation> list) {
-        Log.d("zxccvb", "setList: "+list.size());
-        for (int i = 0; i<list.size();i++) {
-            Log.d("zhuzhuzhu", "setList: " + list.get(i).getName());
+        Log.d("zhuzhuzhu", "setList: size begin   " + list.size());
+        int size = list.size();
+        for (int i = size - 1; i >= 0; i--) {
+            Log.d("zhuzhuzhuzhu", "setList: " + list.get(i).getLastMessage());
             if (list.get(i).getLastMessage() == null) {
                 list.remove(i);
-                i -= 1;
+//                i -= 1;
             }
-            Log.d("zxccvb", "setList: " + list.size());
         }
-        Log.d("zxccvb", "onBindViewHolder: "+list.size());
-        if (list != null && list.size() != 0) {
+        Log.d("zhuzhuzhu", "onBindViewHolder: " + list.size());
+        if (list.size() != 0) {
             binding.noneMessage.setVisibility(View.GONE);
             binding.listMessage.setAdapter(new MyRecyclerAdapter<ItemMessageBinding>(getActivity(), R.layout.item_message
                     , list.size(), new MyRecyclerAdapter.BindView<ItemMessageBinding>() {
@@ -102,10 +103,9 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
                     try {
                         if (list.get(i).getLastMessage() != null) {
                             json = new JSONObject(list.get(i).getLastMessage().getContent());
-
 //                        type = list.get(i).getLastMessage().getContent().substring(list.get(i).getLastMessage().getContent().length()-3);
                         }
-
+                        if (json == null) return;
                         if (json.getString("_lctype").equals("-2")) {
                             b.contentMessageItem.setText("[图片]");
                         } else if (json.getString("_lctype").equals("-3")) {
@@ -202,7 +202,7 @@ public class MessageFragment extends BaseFragment implements IMessageFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CmdsActivity.class);
-                intent.putExtra("list", (Serializable) list );
+                intent.putExtra("list", (Serializable) list);
                 startActivity(intent);
             }
         });
